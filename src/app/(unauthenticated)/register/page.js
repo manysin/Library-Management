@@ -12,7 +12,8 @@ import {
     Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { GoogleIcon } from '@/lib/CutomIcons';
+import { GoogleIcon } from '../../../lib/CutomIcons';
+
 
 const CustomButton = styled(Button)(({ theme }) => ({
     textTransform: 'none',
@@ -59,7 +60,8 @@ const RegisterForm = () => {
     };
 
     return (
-        <Box
+        <div style={{height:'100vh',display:"flex",alignItems:"center",justifyContent:"center"}}>
+             <Box
             sx={{
                 width: 430,
                 margin: 'auto',
@@ -229,6 +231,8 @@ const RegisterForm = () => {
                 </a>
             </Typography>
         </Box>
+        </div>
+       
     );
 };
 

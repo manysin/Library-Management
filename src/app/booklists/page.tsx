@@ -3,6 +3,7 @@ import { useState } from "react";
 import data from "../mock/data.json";
 import Image from "next/image";
 import AddModel from "../../components/AddModel";
+import Layout from "../../components/Layout";
 export default function Booklists() {
   const [books, setBook] = useState(data.data);
   const [isModel,setIsModel] = useState(false);
@@ -129,9 +130,9 @@ export default function Booklists() {
     popUpHandler();
 
   }
-
   return (
     <div>
+      <Layout>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         {
           isModel && (<AddModel isUpdate={isUpdate} addToList={addToList} id={id} popUpHandler={popUpHandler} saveEdit={saveEdit} title={title}
@@ -189,7 +190,7 @@ export default function Booklists() {
                   <td className="px-6 py-4">
                   <Image
                       className="w-20 h-20 rounded-lg object-contain"
-                      src={`/bookImages/${book.coverImage}`}
+                      src={book.coverImage}
                       alt="user photo"
                       width={10}
                       height={10}
@@ -229,6 +230,8 @@ export default function Booklists() {
           </tbody>
         </table>
       </div>
+      </Layout>
+      
       
     </div>
   );
