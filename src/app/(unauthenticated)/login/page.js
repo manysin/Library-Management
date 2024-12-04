@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { GoogleIcon } from "../../../lib/CutomIcons";
+import Link from "next/link";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   textTransform: "none",
@@ -218,9 +219,9 @@ const LoginForm = () => {
           sx={{ fontSize: "14px", fontWeight: "bold", color: "#61677A" }}
         >
           Don’t have an account?{" "}
-          <a href="#" style={{ textDecoration: "none", color: "#1976d2" }}>
+          <Link href="/register" style={{ textDecoration: "none", color: "#1976d2" }}>
             Sign up
-          </a>
+          </Link>
         </Typography>
       </Box>
     </div>

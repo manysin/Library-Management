@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import {
     Box,
     Button,
@@ -13,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { GoogleIcon } from '../../../lib/CutomIcons';
+import Link from 'next/link';
 
 
 const CustomButton = styled(Button)(({ theme }) => ({
@@ -28,36 +30,46 @@ const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const RegisterForm = () => {
+  
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleOnSubmit = async () => {
-        const data = {
+    // const handleOnSubmit = async () => {
+    //     const data = {
+    //         email: email,
+    //         username: username,
+    //         password: password,
+    //     };
+
+    //     try {
+    //         const response = await fetch('/api/users', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(data),
+    //         });
+
+    //         if (response.ok) {
+    //             const result = await response.json();
+    //             console.log('Data saved successfully:', result);
+    //         } else {
+    //             console.error('Error saving data:', response.statusText);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // };
+    const handleOnSubmit = ()=>{
+        const info = {
             email: email,
             username: username,
-            password: password,
-        };
-
-        try {
-            const response = await fetch('/api/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Data saved successfully:', result);
-            } else {
-                console.error('Error saving data:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error:', error);
+            password:password
         }
-    };
+        localStorage.setItem('user', JSON.stringify(info));
+        window.location.href = '/';
+    }
 
     return (
         <div style={{height:'100vh',display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -223,12 +235,12 @@ const RegisterForm = () => {
                 sx={{ fontSize: '14px', fontWeight: 'bold', color: '#61677A' }}
             >
                 Already have an account?{' '}
-                <a
-                    href="#"
+                <Link
+                    href="/login"
                     style={{ textDecoration: 'none', color: '#1976d2' }}
                 >
-                    Sign up
-                </a>
+                    Sign in
+                </Link>
             </Typography>
         </Box>
         </div>
